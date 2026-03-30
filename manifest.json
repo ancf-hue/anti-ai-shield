@@ -1,0 +1,27 @@
+{
+  "name": "Анти-ИИ Щит | Защита от мошенников",
+  "short_name": "Анти-ИИ Щит",
+  "description": "Бесплатный инструмент для защиты от телефонных мошенников. 8 признаков обмана, тренажёр, работает без интернета.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f1f5f9",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["security", "utilities"],
+  "lang": "ru",
+  "dir": "ltr"
+}

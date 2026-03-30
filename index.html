@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- ✅ SEO Meta Tags — ИСПРАВЛЕНО! -->
+    <title>Анти-ИИ Щит — Защита от телефонных мошенников | Бесплатное приложение для пожилых</title>
+    <meta name="description" content="🛡️ Бесплатное приложение для защиты от телефонных мошенников. Автоответчик, экстренная кнопка «МНЕ СТРАШНО», тренажёры. Учитесь распознавать обман. Работает без интернета. Установите сейчас!">
+    <meta name="keywords" content="защита от мошенников, телефонные мошенники, анти мошенник, безопасность, автоответчик, приложение для пожилых, защита звонков, анти-ИИ щит, распознать обман, телефонный обман">
+    <meta name="author" content="Антон Кузнецов">
+    <meta name="robots" content="index, follow">
+    <meta name="subject" content="защита от мошенников, безопасность, телефонные звонки, помощь пожилым">
+    
+    <!-- Open Graph (для соцсетей) -->
+    <meta property="og:title" content="Анти-ИИ Щит — Защита от телефонных мошенников">
+    <meta property="og:description" content="🛡️ Бесплатное приложение: автоответчик, кнопка «МНЕ СТРАШНО», тренажёры. Работает без интернета!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anti-ai-shield.netlify.app/">
+    <meta property="og:image" content="https://anti-ai-shield.netlify.app/logo.jpeg">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Анти-ИИ Щит — Защита от мошенников">
+    <meta name="twitter:description" content="Бесплатное приложение для защиты от телефонных мошенников">
+    <meta name="twitter:image" content="https://anti-ai-shield.netlify.app/logo.jpeg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://anti-ai-shield.netlify.app/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+    <link rel="apple-touch-icon" href="logo.jpeg">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1e293b">
+    <meta name="msapplication-TileColor" content="#1e293b">
+    
+    <!-- ✅ GOOGLE SITE VERIFICATION -->
+    <meta name="google-site-verification" content="8QfQMsfe2uMSncQoDkDQ0qVNVKvXdUCNlBSeMscVMkI" />
+    
+    <!-- ✅ YANDEX VERIFICATION -->
+    <meta name="yandex-verification" content="687e88a5a1feb010" />
+    
+    <!-- ✅ SCHEMA.ORG STRUCTURED DATA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Анти-ИИ Щит",
+      "description": "Бесплатное приложение для защиты от телефонных мошенников. Автоответчик, экстренная кнопка, тренажёры.",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Антон Кузнецов"
+      },
+      "keywords": "защита от мошенников, телефонные мошенники, безопасность, автоответчик, приложение для пожилых, анти-ИИ щит"
+    }
+    </script>
+    
+    <style>
+        :root { --blue: #2563eb; --red: #dc2626; --green: #16a34a; --gray: #475569; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            font-family: system-ui, sans-serif; 
+            background: #f1f5f9; 
+            margin: 0; 
+            padding: 15px; 
+            padding-bottom: 100px;
+            color: #0f172a; 
+            font-size: 22px; 
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 500px; margin: 0 auto; }
+
+        .page-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .page-logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .main-menu { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        
+        .menu-btn {
+            height: 100px;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 22px;
+            font-weight: 900;
+            cursor: pointer;
+            background: linear-gradient(145deg, #3b82f6, #1e40af);
+            box-shadow: 0 8px 0 #1e293b, 0 10px 20px rgba(0,0,0,0.2);
+            transition: 0.08s linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+        }
+        .menu-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #1e293b, 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .btn-help { background: linear-gradient(145deg, #6b7280, #374151); }
+        .btn-auto { background: linear-gradient(145deg, #3b82f6, #2563eb); }
+        .btn-exercises { background: linear-gradient(145deg, #22c55e, #15803d); }
+        .btn-support { background: linear-gradient(145deg, #eab308, #ca8a04); }
+        .btn-exit { background: linear-gradient(145deg, #6b7280, #374151); }
+
+        .panic-btn {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(145deg, #dc2626, #7f1a1a); 
+            color: white; 
+            border: none;
+            border-radius: 30px; 
+            padding: 10px; 
+            font-weight: 900; 
+            font-size: 22px;
+            margin-bottom: 25px; 
+            cursor: pointer;
+            box-shadow: 0 8px 0 #450a0a, 0 10px 20px rgba(0,0,0,0.3);
+            transition: 0.08s linear;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse-sos 1.2s infinite, glow 1.5s infinite;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .panic-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            animation: shine 3s infinite;
+            pointer-events: none;
+        }
+        @keyframes pulse-sos {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 8px 0 #450a0a, 0 0 0 rgba(220, 38, 38, 0.5); }
+            50% { box-shadow: 0 8px 0 #450a0a, 0 0 25px rgba(220, 38, 38, 0.9); }
+            100% { box-shadow: 0 8px 0 #450a0a, 0 0 0 rgba(220, 38, 38, 0.5); }
+        }
+        @keyframes shine {
+            0% { opacity: 0; transform: translateX(-100%) rotate(25deg); }
+            20% { opacity: 0.5; transform: translateX(100%) rotate(25deg); }
+            100% { opacity: 0; transform: translateX(200%) rotate(25deg); }
+        }
+        .panic-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #450a0a, 0 8px 16px rgba(0,0,0,0.3);
+        }
+        
+        .panic-timer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: #ffaa00;
+            font-size: 28px;
+            font-weight: bold;
+            border-radius: 40px;
+            padding: 5px 15px;
+            z-index: 10;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .section { display: none; background: white; border-radius: 35px; padding: 25px; border: 3px solid #e2e8f0; min-height: 70vh; }
+        
+        .back-btn, .reset-btn {
+            width: 100%; padding: 20px; border: none; border-radius: 50px; 
+            font-weight: bold; font-size: 20px; cursor: pointer; margin-top: 15px;
+            background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
+            box-shadow: 0 5px 0 #94a3b8;
+            transition: 0.08s linear;
+            color: #1e293b;
+        }
+        .back-btn:active, .reset-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #94a3b8;
+        }
+        
+        .danger-btn {
+            width: 100%; padding: 20px; border: none; border-radius: 60px;
+            font-size: 22px; font-weight: bold; cursor: pointer; margin-top: 20px;
+            background: linear-gradient(145deg, #f87171, #dc2626);
+            box-shadow: 0 6px 0 #991b1b;
+            transition: 0.08s linear;
+            color: white;
+        }
+        .danger-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #991b1b;
+        }
+
+        .option-btn { 
+            width: 100%; padding: 20px; margin: 10px 0; border-radius: 20px; border: none;
+            background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
+            font-size: 20px; font-weight: bold; text-align: left; 
+            cursor: pointer; transition: 0.05s linear;
+            box-shadow: 0 4px 0 #94a3b8;
+            color: #1e293b;
+        }
+        .option-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #94a3b8; }
+        .option-btn.correct-flash { background: #16a34a; box-shadow: 0 4px 0 #15803d; color: white; }
+        .option-btn.wrong-flash { background: #dc2626; box-shadow: 0 4px 0 #991b1b; color: white; }
+        
+        .phrase-item { 
+            background: #f1f5f9; padding: 15px; border-radius: 15px; margin-bottom: 10px;
+            border-left: 8px solid var(--blue); cursor: pointer; font-size: 19px;
+            transition: 0.05s linear; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+        }
+        .phrase-item:active { transform: scale(0.98); }
+        
+        .play-audio-btn {
+            background: linear-gradient(145deg, #3b82f6, #2563eb);
+            color: white; border: none; border-radius: 50%;
+            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 20px; flex-shrink: 0;
+            box-shadow: 0 4px 0 #1e40af; transition: 0.08s linear;
+        }
+        .play-audio-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #1e40af; }
+        .play-audio-btn.playing {
+            background: linear-gradient(145deg, #dc2626, #991b1b);
+            box-shadow: 0 4px 0 #7f1d1d; animation: pulse-audio 1s infinite;
+        }
+        @keyframes pulse-audio { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+        .risk-panel { text-align: center; border: 3px solid; border-radius: 24px; padding: 16px; margin-bottom: 20px; }
+        .risk-low { border-color: #22c55e; background: #f0fdf4; }
+        .risk-mid { border-color: #eab308; background: #fefce8; }
+        .risk-high { border-color: #ef4444; background: #fef2f2; animation: pulse-red 2s infinite; }
+        @keyframes pulse-red { 0%, 100% { box-shadow: 0 4px 12px rgba(0,0,0,0.05); } 50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); } }
+        
+        .checklist-item {
+            background: #f8fafc; margin-bottom: 12px; border-radius: 60px;
+            padding: 16px; display: flex; align-items: center; gap: 12px; cursor: pointer;
+        }
+        .checklist-item:active { transform: scale(0.98); background: #e2e8f0; }
+        .checklist-item input { width: 28px; height: 28px; margin: 0; cursor: pointer; }
+        .checklist-item span { flex: 1; font-size: 18px; }
+        
+        .quick-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 8px; }
+        .quick-btn {
+            background: #e2e8f0; border: none; border-radius: 60px;
+            padding: 12px 18px; font-size: 16px; font-weight: bold;
+            color: #1e293b; cursor: pointer;
+        }
+        .quick-btn:active { transform: scale(0.96); }
+
+        .progress-bar { background: #e2e8f0; border-radius: 20px; height: 16px; margin-bottom: 15px; overflow: hidden; }
+        .progress-fill { background: #16a34a; width: 0%; height: 100%; transition: width 0.3s; }
+        .error-item { background: #fee2e2; border-left: 4px solid #dc2626; padding: 10px; margin: 8px 0; border-radius: 12px; }
+        .inst-box { font-size: 18px; line-height: 1.4; }
+        .legal { font-size: 14px; background: #fffbeb; padding: 15px; border-radius: 15px; border: 1px solid #fef3c7; margin-top: 15px; }
+        .legal-small { font-size: 10px; color: #64748b; text-align: center; margin-top: 20px; padding: 10px; border-top: 1px solid #e2e8f0; }
+
+        /* Toast уведомления */
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1e293b;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 10001;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            max-width: 90%;
+            text-align: center;
+        }
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        #toast.success { background: #16a34a; }
+        #toast.error { background: #dc2626; }
+        #toast.info { background: #2563eb; }
+
+        /* SOS-оверлей */
+        #emergencyOverlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #8b0000; z-index: 9999; flex-direction: column;
+            justify-content: center; align-items: center; padding: 20px;
+            transition: opacity 0.5s ease;
+        }
+        .video-container {
+            width: 100%; max-width: 500px; border-radius: 24px; overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3); margin-bottom: 20px;
+        }
+        video { width: 100%; display: block; }
+        
+        .sos-content {
+            display: flex; align-items: center; justify-content: center;
+            gap: 20px; margin-bottom: 20px; flex-wrap: wrap;
+        }
+        .sos-logo {
+            width: 80px; height: 80px; flex-shrink: 0;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+        }
+        .sos-logo img {
+            width: 100%; height: 100%; object-fit: contain;
+            border-radius: 12px; background: white; padding: 4px;
+        }
+        .sos-text { text-align: center; flex: 1; min-width: 200px; }
+        .sos-text .command {
+            color: white; font-size: 2rem; font-weight: 900;
+            text-align: center; margin: 8px 0; text-shadow: 2px 2px 4px black;
+            line-height: 1.3;
+        }
+        
+        .stop-trigger {
+            background: rgba(100, 100, 100, 0.8); color: white;
+            border: 2px solid white; border-radius: 50px;
+            padding: 12px 28px; font-size: 18px; font-weight: bold;
+            cursor: pointer; margin: 10px auto 0; width: auto; text-align: center;
+            transition: all 0.2s;
+        }
+        .stop-trigger.timer-active {
+            background: #ffaa00; color: #000; font-weight: bold;
+        }
+        
+        .confirm-dialog {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 85%; max-width: 350px; background: white; border-radius: 24px;
+            padding: 25px; text-align: center; z-index: 10002;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3); animation: fadeIn 0.2s;
+        }
+        .confirm-dialog.warning { background: #fef3c7; border: 2px solid #f59e0b; }
+        .confirm-dialog.danger { background: #fee2e2; border: 2px solid #dc2626; }
+        .confirm-dialog p { margin: 0 0 15px 0; font-size: 18px; font-weight: bold; color: #1e293b; }
+        .confirm-dialog .warning-text { color: #b91c1c; font-size: 14px; margin-top: 8px; }
+        .confirm-dialog button {
+            padding: 12px 24px; margin: 5px; border: none; border-radius: 50px;
+            font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.1s;
+        }
+        .confirm-dialog .btn-yes { background: #dc2626; color: white; }
+        .confirm-dialog .btn-no { background: #e2e8f0; color: #1e293b; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        #exitModal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 20000; justify-content: center; align-items: center; padding: 20px;
+        }
+        .exit-card {
+            background: white; border-radius: 32px; padding: 32px 24px;
+            max-width: 400px; width: 100%; text-align: center; animation: slideUp 0.3s ease;
+        }
+        .exit-card h2 { font-size: 28px; margin: 0 0 20px 0; color: #1e293b; }
+        .exit-card p { font-size: 18px; line-height: 1.5; color: #334155; margin: 12px 0; }
+        .exit-instruction {
+            text-align: left; margin: 20px 0; font-size: 16px; line-height: 1.8;
+            background: #f8fafc; padding: 16px; border-radius: 20px;
+        }
+        .exit-btn-close {
+            background: linear-gradient(145deg, #2563eb, #1e40af); color: white;
+            border: none; border-radius: 60px; padding: 14px 28px;
+            font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 16px; width: 100%;
+        }
+        .exit-btn-close:active { transform: scale(0.98); }
+        
+        .support-card {
+            background: linear-gradient(145deg, #fef3c7, #fde68a);
+            border-radius: 24px; padding: 24px; margin-bottom: 20px; text-align: center;
+        }
+        .support-card h2 { font-size: 28px; margin: 0 0 16px 0; color: #92400e; }
+        .support-card p { font-size: 18px; line-height: 1.5; color: #78350f; margin: 12px 0; }
+        .phone-number {
+            background: #fff; border-radius: 60px; padding: 16px; margin: 20px 0;
+        }
+        .phone-number div:first-child { font-size: 14px; color: #64748b; }
+        .phone-number .big-number {
+            font-size: 32px; font-weight: bold; font-family: monospace;
+            letter-spacing: 2px; margin: 8px 0;
+        }
+        .btn-copy {
+            background: #2563eb; color: white; border: none; border-radius: 60px;
+            padding: 10px 24px; font-size: 16px; font-weight: bold;
+            cursor: pointer; margin-top: 8px; transition: 0.1s;
+        }
+        .btn-copy:active { transform: scale(0.96); }
+        
+        #audioIndicator {
+            display: none; background: #dbeafe; border: 2px solid #3b82f6;
+            border-radius: 12px; padding: 12px 16px; margin-bottom: 16px;
+            text-align: center; font-weight: bold; color: #1e40af;
+            animation: slide-down 0.3s ease;
+        }
+        @keyframes slide-down { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .phone-btn {
+            width: 100%; padding: 18px; border: none; border-radius: 50px;
+            font-size: 20px; font-weight: bold; cursor: pointer; margin-top: 12px;
+            box-shadow: 0 5px 0 #94a3b8; transition: 0.08s linear;
+        }
+        .phone-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 #94a3b8; }
+        .phone-btn.relative {
+            background: linear-gradient(145deg, #22c55e, #15803d);
+            color: white; box-shadow: 0 5px 0 #15803d;
+        }
+        
+        .water-tip {
+            background: #dcfce7; border: 2px solid #16a34a;
+            border-radius: 12px; padding: 12px; margin-top: 12px;
+            font-size: 16px; color: #166534;
+        }
+        .secret-word-block {
+            background: #fef3c7; border: 2px solid #f59e0b;
+            border-radius: 12px; padding: 12px; margin-top: 12px;
+            font-size: 16px; color: #92400e;
+        }
+        .install-steps {
+            background: #f0f9ff; border: 2px solid #0ea5e9;
+            border-radius: 12px; padding: 12px; margin-top: 12px;
+            font-size: 16px; color: #0369a1;
+        }
+        .delete-steps {
+            background: #fef2f2; border: 2px solid #ef4444;
+            border-radius: 12px; padding: 12px; margin-top: 12px;
+            font-size: 16px; color: #b91c1c;
+        }
+        .clear-data-btn {
+            background: #ef4444; color: white; border: none; border-radius: 50px;
+            padding: 14px 24px; font-size: 18px; font-weight: bold;
+            cursor: pointer; width: 100%; box-shadow: 0 4px 0 #991b1b;
+            transition: 0.08s linear;
+        }
+        .clear-data-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 #991b1b; }
+        
+        .sos-instruction {
+            background: #fef3c7; border: 2px solid #f59e0b;
+            border-radius: 20px; padding: 20px; margin-bottom: 20px; text-align: left;
+        }
+        .sos-instruction h3 { margin: 0 0 12px 0; color: #b91c1c; font-size: 20px; }
+        .sos-instruction ol { margin: 0; padding-left: 20px; font-size: 18px; line-height: 1.6; }
+        .sos-instruction li { margin-bottom: 12px; }
+        
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .exercise-btn {
+            width: 100%; padding: 20px; margin: 10px 0; border: none; border-radius: 30px;
+            color: white; font-size: 20px; font-weight: bold; cursor: pointer;
+            transition: 0.08s linear; box-shadow: 0 6px 0 #1e293b;
+        }
+        .exercise-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #1e293b; }
+        .btn-train { background: linear-gradient(145deg, #22c55e, #15803d); }
+        .btn-phrases { background: linear-gradient(145deg, #3b82f6, #1e40af); }
+        .btn-check { background: linear-gradient(145deg, #eab308, #ca8a04); }
+        
+        @media (prefers-color-scheme: dark) {
+            body { background: #0f172a; color: #e2e8f0; }
+            .section { background: #1e293b; border-color: #334155; }
+            .option-btn { background: linear-gradient(145deg, #334155, #1e293b); box-shadow: 0 4px 0 #0f172a; color: white; }
+            .back-btn, .reset-btn { background: linear-gradient(145deg, #334155, #1e293b); box-shadow: 0 5px 0 #0f172a; color: white; }
+            .phrase-item { background: #334155; }
+            .legal { background: #2d2f3a; border-color: #f59e0b; color: #fcd34d; }
+            .checklist-item { background: #334155; }
+            .risk-low { background: #14532d; border-color: #22c55e; }
+            .risk-mid { background: #451a03; border-color: #eab308; }
+            .risk-high { background: #7f1a1a; border-color: #ef4444; }
+            .progress-bar { background: #334155; }
+            .error-item { background: #7f1a1a; border-left-color: #ef4444; }
+            #audioIndicator { background: #1e3a8a; border-color: #3b82f6; color: #93c5fd; }
+            .water-tip { background: #14532d; border-color: #16a34a; color: #86efac; }
+            .secret-word-block { background: #451a03; border-color: #f59e0b; color: #fcd34d; }
+            .install-steps { background: #0c4a6e; border-color: #0ea5e9; color: #7dd3fc; }
+            .delete-steps { background: #450a0a; border-color: #ef4444; color: #fca5a5; }
+            .clear-data-btn { background: #dc2626; box-shadow: 0 4px 0 #7f1d1d; }
+            .sos-instruction { background: #451a03; border-color: #f59e0b; }
+            .legal-small { border-top-color: #334155; color: #94a3b8; }
+            .confirm-dialog { background: #1e293b; }
+            .confirm-dialog p { color: #e2e8f0; }
+            .confirm-dialog.warning { background: #451a03; }
+            .confirm-dialog.danger { background: #7f1a1a; }
+            .quick-btn { background: #334155; color: #e2e8f0; }
+            #emergencyOverlay { background: #1e293b; }
+            .sos-text .command { color: #f87171; }
+            .exit-card { background: #1e293b; }
+            .exit-card h2 { color: #f1f5f9; }
+            .exit-card p { color: #cbd5e1; }
+            .exit-instruction { background: #334155; }
+            .support-card { background: linear-gradient(145deg, #451a03, #78350f); }
+            .support-card h2 { color: #fde68a; }
+            .support-card p { color: #fed7aa; }
+            .phone-number { background: #1e293b; }
+            .phone-number .big-number { color: #fde68a; }
+            #toast { background: #334155; }
+            #toast.success { background: #16a34a; }
+            #toast.error { background: #dc2626; }
+            #toast.info { background: #2563eb; }
+        }
+        
+        @media (max-width: 480px) {
+            .sos-content { flex-direction: column; gap: 15px; }
+            .sos-logo { width: 70px; height: 70px; }
+            .sos-text .command { font-size: 1.4rem; }
+        }
+        @media (orientation: landscape) {
+            .sos-text .command { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Toast уведомления -->
+<div id="toast"></div>
+
+<!-- SOS ОВЕРЛЕЙ -->
+<div id="emergencyOverlay">
+    <div class="video-container">
+        <video id="aniskinVideo" loop playsinline>
+            <source src="aniskin.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="sos-content">
+        <div class="sos-logo">
+            <img src="logo.jpeg" alt="Анти-ИИ Щит" onerror="this.style.display='none'">
+        </div>
+        <div class="sos-text">
+            <div class="command">ЭТО МОШЕННИКИ.</div>
+            <div class="command">ПОЛОЖИТЕ ТРУБКУ.</div>
+            <div class="command">ВЫКЛЮЧИТЕ ТЕЛЕФОН.</div>
+        </div>
+    </div>
+    <div id="stopButtonContainer"></div>
+</div>
+
+<div class="container">
+    <button class="panic-btn" id="activateSosBtn">
+        <span id="panicBtnText">⚠️ МНЕ СТРАШНО</span>
+        <span id="panicTimer" class="panic-timer" style="display: none;"></span>
+    </button>
+
+    <!-- ГЛАВНОЕ МЕНЮ -->
+    <div id="main-menu" class="main-menu">
+        <button class="menu-btn btn-help" onclick="openSection('help')">📱 КАК ПОЛЬЗОВАТЬСЯ</button>
+        <button class="menu-btn btn-auto" onclick="openAutoResponder()">🗣️ АВТООТВЕТЧИК</button>
+        <button class="menu-btn btn-exercises" onclick="openSection('exercises')">🎓 УПРАЖНЕНИЯ</button>
+        <button class="menu-btn btn-support" onclick="openSection('support')">💰 ПОДДЕРЖАТЬ ПРОЕКТ</button>
+        <button class="menu-btn btn-exit" onclick="showExitInstructions()">🚪 ВЫЙТИ</button>
+    </div>
+
+    <!-- РАЗДЕЛ: УПРАЖНЕНИЯ -->
+    <div id="sec-exercises" class="section">
+        <div class="page-logo"><img src="logo.jpeg" alt="Анти-ИИ Щит" onerror="this.style.display='none'"></div>
+        <h2 style="text-align: center; margin-bottom: 20px;">🎓 УПРАЖНЕНИЯ</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Выберите, что хотите сделать:</p>
+        <button class="exercise-btn btn-train" onclick="openSection('train')">🎓 УЧИТЬСЯ (11 УРОКОВ)</button>
+        <button class="exercise-btn btn-phrases" onclick="openSection('phrases')">📢 ОПАСНЫЕ ФРАЗЫ (20)</button>
+        <button class="exercise-btn btn-check" onclick="openSection('check')">🔍 ПРОВЕРКА ЗВОНКА (8 ПРИЗНАКОВ)</button>
+        <button class="back-btn" onclick="closeSection()">🏠 НАЗАД</button>
+    </div>
+
+    <!-- РАЗДЕЛ: УЧИТЬСЯ (ТРЕНАЖЁР) -->
+    <div id="sec-train" class="section">
+        <div class="page-logo"><img src="logo.jpeg" alt="Анти-ИИ Щит" onerror="this.style.display='none'"></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <h2 id="train-title">Урок 1 из 11</h2>
+        <p id="train-q" style="font-weight: bold; font-size: 22px;"></p>
+        <div id="train-options"></div>
+        <div id="trainResult" style="margin-top: 15px;"></div>
+        <button class="back-btn" onclick="closeSection()">🏠 НАЗАД</button>
+    </div>
+
+    <!-- РАЗДЕЛ: ОПАСНЫЕ ФРАЗЫ -->
+    <div id="sec-phrases" class="section">
+        <div class="page-logo"><img src="logo.jpeg" alt="Анти-ИИ Щит" onerror="this.style.display='none'"></div>
+        <div id="audioIndicator">🔊 Воспроизведение: <span id="currentPhrase">...</span></div>
+        <h2>Нажми 🔊 чтобы услышать:</h2>
+        <div id="phrases-list"></div>
+        <button class="back-btn" onclick="closeSection()">🏠 НАЗАД</button>
+    </div>
+
+    <!-- РАЗДЕЛ: ПРОВЕРКА ЗВОНКА -->
+    <div id="sec-check" class="section">
+        <div class="page-logo"><img src="logo.jpeg" alt="Анти-ИИ Щит" onerror="this.style.display='none'"></div>
+        <div class="risk-panel" id="riskPanel">
+            <div class="risk-icon" id="riskIcon">🟢</div>
+            <div class="risk-text" id="riskText">Низкий риск</div>
+            <div id="riskCount">0 из 8 признаков</div>
+        </div>
+        <h2>ПРИЗНАКИ МОШЕННИЧЕСТВА:</h2>
+        <div id="checklistContainer"></div>
+        <div class="quick-buttons" id="quickButtons">
+            <button class="quick-btn" data-phrase="срочность">⏰ Торопит</button>
+            <button class="quick-btn" data-phrase="код">🔐 Код из СМС</button>
+            <button class="quick-btn" data-phrase="трубка">📞 Не класть трубку</button>
+            <button class="quick-btn" data-phrase="секрет">🤫 Сохранить в тайне</button>
+            <button class="quick-btn" data-phrase="мессенджер">📱 Звонок в мессенджере</button>
+            <button class="quick-btn" data-phrase="голос">🎙️ Голос как нейросеть</button>
+        </div>
+        <button class="danger-btn" id="panicCheckBtn">🚨 Я ПОДОЗРЕВАЮ ОБМАН</button>
+        <details class="emergency-contacts" style="margin-top: 16px;">
+            <summary style="font-weight: bold; color: #dc2626; cursor: pointer; font-size: 18px;">📞 Экстренные контакты</summary>
+            <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: block; padding: 14px; background: #fef2f2; border: 2px solid #ef4444; border-radius: 12px; color: #b91c1c; font-weight: bold; text-align: center; font-size: 18px;">🆘 112 — Экстренная помощь</div>
+                <div style="padding: 12px; background: #fef3c7; border: 2px solid #f59e0b; border-radius: 12px; color: #92400e; font-size: 14px; text-align: center;"><strong>⚠️ Важно:</strong> Никогда не звоните по номеру, который вам продиктовали!</div>
+                <div id="relativeCallBlock" style="margin-top: 12px;">
+                    <button class="phone-btn relative" id="relativeCallBtn">👨‍👧 ПОЗВОНИТЬ РОДСТВЕННИКУ</button>
+                    <div id="relativeSettings" style="margin-top: 12px;">
+                        <input type="tel" id="relativePhone" placeholder="Введите номер родственника" style="width: 100%; padding: 14px; border-radius: 50px; border: 2px solid #e2e8f0; font-size: 18px; text-align: center;">
+                        <button id="saveRelativeBtn" style="margin-top: 10px; padding: 12px; background: #e2e8f0; border: none; border-radius: 50px; width: 100%; font-size: 16px; cursor: pointer;">💾 СОХРАНИТЬ НОМЕР</button>
+                        <div id="savedNumberDisplay" style="font-size: 14px; color: #4b5563; text-align: center; margin-top: 8px;"></div>
+                    </div>
+                </div>
+                <div style="padding: 12px; background: #f0f9ff; border: 2px solid #0ea5e9; border-radius: 12px; color: #0369a1; font-size: 15px; text-align: center;">
+                    <strong>🏦 Ваш банк:</strong><br>
+                    Официальный телефонный номер вашего банка,<br>
+                    <strong>указанный на обратной стороне вашей карты.</strong>
+                </div>
+            </div>
+        </details>
+        <details class="secret-word-block" style="margin-top: 12px;">
+            <summary style="font-weight: bold; color: #92400e; cursor: pointer; font-size: 18px;">🔑 Вспомнить секретное слово</summary>
+            <div style="margin-top: 12px; padding: 12px; background: #fef3c7; border-radius: 12px; font-size: 16px;">
+                <strong>Спросите звонящего:</strong><br>
+                «Назови наше секретное слово»<br><br>
+                ❌ Не знает или злится → мошенник<br>
+                ✅ Назвал верно → ваш близкий<br><br>
+                <strong>Если сомневаетесь — положите трубку и перезвоните сами.</strong>
+            </div>
+        </details>
+        <div class="water-tip">💧 <strong>Совет:</strong> Выпейте стакан воды — это поможет успокоиться и принять верное решение.</div>
+        <button class="reset-btn" id="resetCheckBtn">⟳ СБРОСИТЬ ВСЁ</button>
+        <button class="back-btn" onclick="closeSection()">🏠 НАЗАД</button>
+    </div>
+
+    <!-- РАЗДЕЛ: КАК ПОЛЬЗОВАТЬСЯ -->
+    <div id="sec-help" class="section">
+        <div class="page-logo"><img src="logo.jpeg" alt="Анти-ИИ Щит" onerror="this.style.display='none'"></div>
+        <div class="inst-box">
+            <b>📱 КАК ПОЛЬЗОВАТЬСЯ</b><br><br>
+            <div class="sos-instruction">
+                <h3>🛡️ ИНСТРУКЦИЯ: ЧТО ДЕЛАТЬ, ЕСЛИ СТРАШНО</h3>
+                <ol>
+                    <li><strong>Нажмите кнопку «МНЕ СТРАШНО»</strong><br>
+                    Как только вы почувствовали, что собеседник вас пугает, давит или требует деньги — не спорьте с ним. Просто откройте приложение и нажмите на большую красную кнопку.</li>
+                    <li><strong>На экране появится чёткая инструкция</strong><br>
+                    Экран станет красным, начнётся короткое видео с командой. Мошенник услышит этот звук через ваш микрофон и поймёт, что вы под защитой.</li>
+                    <li><strong>Немедленно ВЫКЛЮЧИТЕ ТЕЛЕФОН</strong><br>
+                    Не пытайтесь закрыть приложение пальцем. Самый надёжный способ спасти деньги — физически разорвать связь.<br>
+                    <strong>Зажмите кнопку питания на боку телефона и держите её 5–10 секунд, пока экран полностью не погаснет.</strong></li>
+                    <li><strong>Сделайте паузу</strong><br>
+                    Положите выключенный телефон на стол. Выпейте стакан воды. Через 5 минут включите телефон и сами позвоните своим близким.</li>
+                </ol>
+            </div>
+            <details open>
+                <summary style="font-weight: bold; cursor: pointer; color: #2563eb; font-size: 18px; margin-bottom: 8px;">📥 Как установить на телефон</summary>
+                <div class="install-steps">
+                    <p><strong>🍎 iPhone:</strong> Поделиться → «На экран "Домой"» → Добавить</p>
+                    <p><strong>🤖 Android:</strong> Меню (⋮) → «Добавить на главный экран» → Добавить</p>
+                </div>
+            </details>
+            <div style="margin-top: 20px; background: #e2e8f0; border-radius: 20px; padding: 16px;">
+                <p style="font-weight: bold; margin: 0 0 8px 0;">📤 ПОДЕЛИТЬСЯ ПРИЛОЖЕНИЕМ</p>
+                <p style="margin: 4px 0; font-size: 15px;">Отправьте ссылку родственникам — они тоже смогут защититься от мошенников.</p>
+                <div style="background: white; border-radius: 16px; padding: 12px; margin: 12px 0;">
+                    <p style="font-size: 13px; color: #64748b; margin: 0 0 4px 0;">🔗 Адрес приложения:</p>
+                    <div style="font-family: monospace; font-size: 14px; word-break: break-all; background: #f8fafc; padding: 8px; border-radius: 12px;" id="currentUrl"></div>
+                </div>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button id="shareBtn" class="share-btn" style="flex: 1; margin-top: 0; background: #2563eb; color: white; border: none; border-radius: 50px; padding: 12px 20px; font-size: 16px; font-weight: bold; cursor: pointer;">📤 ПОДЕЛИТЬСЯ</button>
+                    <button onclick="copyCurrentUrl()" style="background: #6b7280; color: white; border: none; border-radius: 50px; padding: 12px 20px; font-size: 16px; font-weight: bold; cursor: pointer; flex: 1;">📋 КОПИРОВАТЬ ССЫЛКУ</button>
+                </div>
+            </div>
+            <details style="margin-top: 12px;">
+                <summary style="font-weight: bold; cursor: pointer; color: #dc2626; font-size: 18px;">🗑️ Как удалить приложение</summary>
+                <div class="delete-steps">
+                    <p><strong>Способ 1 (быстрый):</strong> Удалите ярлык с главного экрана.</p>
+                    <p><strong>Способ 2 (полная очистка):</strong> Нажмите кнопку ниже, затем удалите ярлык.</p>
+                    <button id="clearDataBtn" class="clear-data-btn" style="margin-top: 12px;">🗑️ ОЧИСТИТЬ ВСЕ МОИ ДАННЫЕ</button>
+                    <p id="clearDataResult" style="margin-top: 12px; font-size: 14px; color: #166534; display: none;">✅ Данные очищены!</p>
+                </div>
+            </details>
+            <div class="legal">
+                📜 <b>МЫ ПОМОГАЕМ СОГЛАСНО ЗАКОНУ</b><br>
+                Проект создан в соответствии с Федеральным законом от 10.03.2025 № 36-ФЗ «О противодействии телефонному мошенничеству».<br><br>
+                ⚠️ <b>МЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТЬ</b><br>
+                Мы не можем прервать телефонный звонок. Мы только предупреждаем о признаках мошенничества.<br>
+                <b>Абонент САМ решает:</b> продолжать разговор или положить трубку.<br>
+                Окончательное решение принимаете ВЫ.<br><br>
+                <b>✅ БЕСПЛАТНО, БЕЗ ИНТЕРНЕТА, БЕЗ РАЗРЕШЕНИЙ</b>
+            </div>
+        </div>
+        <div class="legal-small">
+            ⚖️ <strong>Юридическая информация:</strong> Нажимая кнопку «МНЕ СТРАШНО», пользователь активирует режим экстренного оповещения. Приложение не блокирует устройство технически. Остановка звукового сигнала осуществляется путем закрытия вкладки браузера или перезагрузки мобильного устройства пользователем. Проект является некоммерческим и создан для профилактики мошенничества.
+        </div>
+        <button class="back-btn" onclick="closeSection()">🏠 НАЗАД</button>
+    </div>
+
+    <!-- РАЗДЕЛ: АВТООТВЕТЧИК -->
+    <div id="sec-autoresponder" class="section">
+        <div class="page-logo"><img src="logo.jpeg" alt="Анти-ИИ Щит" onerror="this.style.display='none'"></div>
+        <div id="autoScreen" class="auto-screen" style="background: #1e3a5f; border-radius: 36px; padding: 24px; margin-bottom: 24px; color: white; text-align: center;">
+            <div id="autoVoice" class="auto-voice" style="font-size: 22px; font-weight: 600; background: #0f172a; padding: 20px; border-radius: 28px; margin-bottom: 20px; font-style: italic;">"Да... говорите, я слушаю..."</div>
+            <div id="autoHint" class="auto-hint" style="background: #fef3c7; color: #92400e; padding: 16px; border-radius: 24px; font-size: 16px; margin-bottom: 20px; text-align: left;">💡 Спокойно слушайте, не перебивайте.</div>
+            <div class="auto-buttons" style="display: flex; gap: 16px;">
+                <button id="autoNextBtn" class="auto-next" style="flex: 2; background: #3b82f6; color: white; border: none; border-radius: 60px; padding: 16px; font-weight: bold; font-size: 18px; cursor: pointer; box-shadow: 0 4px 0 #1e40af;">⏩ ДАЛЬШЕ</button>
+                <button id="autoStopBtn" class="auto-stop" style="flex: 1; background: #dc2626; color: white; border: none; border-radius: 60px; padding: 16px; font-weight: bold; font-size: 18px; cursor: pointer; box-shadow: 0 4px 0 #7f1d1d;">🔴 ОТКЛЮЧИТЬСЯ</button>
+            </div>
+        </div>
+        <button class="back-btn" onclick="closeSection()">🏠 НАЗАД</button>
+    </div>
+
+    <!-- РАЗДЕЛ: ПОДДЕРЖКА -->
+    <div id="sec-support" class="section">
+        <div class="page-logo"><img src="logo.jpeg" alt="Анти-ИИ Щит" onerror="this.style.display='none'"></div>
+        <div class="support-card">
+            <h2>🛡️ АНТИ-ИИ ЩИТ — БЕСПЛАТНО НАВСЕГДА</h2>
+            <div style="text-align: center; margin: 20px 0;">
+                <div style="font-size: 48px; margin-bottom: 10px;">💙</div>
+                <p style="font-size: 18px; font-weight: bold;">Приложение бесплатное.<br>Было и останется. Никаких платных функций.</p>
+            </div>
+            <p>Если проект помог вам или вашим близким —<br>можете поддержать разработку добровольным переводом.</p>
+            <p style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 16px;">
+                Это не обязательно. Но очень поможет нам:<br>
+                • Оплачивать хостинг<br>
+                • Добавлять новые функции<br>
+                • Защищать больше людей
+            </p>
+            <div class="phone-number">
+                <div>📱 ПЕРЕВОД ПО НОМЕРУ ТЕЛЕФОНА:</div>
+                <div class="big-number">8-920-227-56-76</div>
+                <button class="btn-copy" onclick="copyPhoneNumber()">📋 Копировать номер</button>
+            </div>
+            <div style="text-align: left; background: #f8fafc; border-radius: 20px; padding: 16px; margin: 16px 0;">
+                <p style="font-weight: bold; margin: 0 0 8px 0;">📱 Как перевести (пошагово):</p>
+                <p>1. Откройте банк на своём телефоне (СберБанк, Тинькофф, ВТБ — любой)</p>
+                <p>2. Нажмите «Платежи» → «По номеру телефона»</p>
+                <p>3. Введите номер: <strong>8-920-227-56-76</strong></p>
+                <p>4. Введите любую сумму</p>
+                <p>5. Нажмите «Перевести»</p>
+            </div>
+            <div style="background: #dcfce7; border-radius: 20px; padding: 12px; margin: 16px 0;">
+                <p style="margin: 4px 0; font-size: 15px; color: #166534;">✅ Деньги придут мгновенно</p>
+                <p style="margin: 4px 0; font-size: 15px; color: #166534;">✅ Без комиссии (внутри одного банка)</p>
+                <p style="margin: 4px 0; font-size: 15px; color: #166534;">✅ Безопасно</p>
+            </div>
+            <p style="margin-top: 20px; font-size: 18px;">❤️ Спасибо за поддержку!</p>
+            <p>Ваша помощь делает мир безопаснее.<br>Вместе мы защитим больше людей от мошенников! 🛡️</p>
+        </div>
+        <button class="back-btn" onclick="closeSection()">🏠 НАЗАД</button>
+    </div>
+</div>
+
+<!-- Модальное окно выхода -->
+<div id="exitModal">
+    <div class="exit-card">
+        <div style="font-size: 64px; margin-bottom: 20px;">🚪</div>
+        <h2>Выход из приложения</h2>
+        <div class="exit-instruction">
+            <p><strong>📱 Как закрыть:</strong></p>
+            <p>🍎 <strong>iPhone:</strong> Свайп вверх от нижнего края → смахните приложение вверх</p>
+            <p>🤖 <strong>Android:</strong> Нажмите кнопку ≡ → смахните приложение</p>
+            <p>💻 <strong>Компьютер:</strong> Закройте вкладку браузера</p>
+        </div>
+        <p style="font-size: 14px; margin-top: 16px;">Берегите себя и своих близких! ❤️</p>
+        <button class="exit-btn-close" onclick="closeExitModal()">ПОНЯТНО</button>
+    </div>
+</div>
+
+<audio id="audioPlayer" preload="none"></audio>
+
+<script>
+    // ========== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ==========
+    let emergencyActive = false;
+    let currentTimerInterval = null;
+    let step1Timeout = null, step2Timeout = null, step3Timeout = null;
+    let currentAudio = null;
+    let currentTrainStep = 0, correctCount = 0, errorCount = 0, mistakes = [];
+    let checks = [false, false, false, false, false, false, false, false];
+    let currentStep = 0;
+
+    // ========== TOAST УВЕДОМЛЕНИЯ ==========
+    function showToast(message, type = 'info', duration = 2500, callback = null) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = '';
+        toast.classList.add(type);
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+            if (callback) setTimeout(callback, 300);
+        }, duration);
+    }
+
+    // ========== ФУНКЦИИ КОПИРОВАНИЯ ==========
+    function copyPhoneNumber() {
+        const phone = "8-920-227-56-76";
+        navigator.clipboard.writeText(phone).then(() => {
+            showToast('Номер скопирован! ✅', 'success', 2000);
+        }).catch(() => {
+            showToast('Не удалось скопировать', 'error', 2500);
+        });
+    }
+    
+    function copyCurrentUrl() {
+        const url = window.location.href;
+        if (url.startsWith('file://')) {
+            showToast('Ссылка появится после публикации', 'info', 3000);
+            return;
+        }
+        navigator.clipboard.writeText(url).then(() => {
+            showToast('Ссылка скопирована! ✅', 'success', 2000);
+        }).catch(() => {
+            showToast('Не удалось скопировать', 'error', 2500);
+        });
+    }
+    
+    async function shareLink() {
+        const url = window.location.href;
+        if (url.startsWith('file://')) {
+            showToast('Поделиться можно после публикации', 'info', 3000);
+            return;
+        }
+        if (navigator.share) {
+            try { await navigator.share({ title: 'Анти-ИИ Щит', text: 'Защита от мошенников', url }); } catch(e) {}
+        } else {
+            await navigator.clipboard.writeText(url);
+            showToast('Ссылка скопирована! ✅', 'success', 2000);
+        }
+    }
+
+    // ========== SOS РЕЖИМ ==========
+    function showStopButtonStep1() {
+        const container = document.getElementById('stopButtonContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        const stopBtn = document.createElement('button');
+        stopBtn.className = 'stop-trigger';
+        stopBtn.textContent = '✖ СТОП';
+        stopBtn.onclick = () => { startStopTimer(1); };
+        container.appendChild(stopBtn);
+    }
+    
+    function startStopTimer(step) {
+        const container = document.getElementById('stopButtonContainer');
+        let seconds = 5;
+        const timerBtn = document.createElement('button');
+        timerBtn.className = 'stop-trigger timer-active';
+        timerBtn.textContent = `⏱️ ${seconds}`;
+        timerBtn.onclick = null;
+        container.innerHTML = '';
+        container.appendChild(timerBtn);
+        
+        const interval = setInterval(() => {
+            seconds--;
+            if (seconds <= 0) {
+                clearInterval(interval);
+                if (step === 1) showConfirmDialog('first', () => startStopTimer(2));
+                else if (step === 2) showConfirmDialog('second', () => startStopTimer(3));
+                else if (step === 3) showConfirmDialog('final', () => startStopTimer(4));
+                else if (step === 4) stopEmergencyHelpSmooth();
+            } else {
+                timerBtn.textContent = `⏱️ ${seconds}`;
+            }
+        }, 1000);
+        currentTimerInterval = interval;
+    }
+    
+    function showConfirmDialog(type, onYes) {
+        const overlay = document.getElementById('emergencyOverlay');
+        const existingDialog = document.querySelector('.confirm-dialog');
+        if (existingDialog) existingDialog.remove();
+        
+        const dialog = document.createElement('div');
+        let html = '';
+        if (type === 'first') {
+            dialog.className = 'confirm-dialog warning';
+            html = `<p>⚠️ ВЫ УВЕРЕНЫ, ЧТО ХОТИТЕ ВЫКЛЮЧИТЬ ЗАЩИТУ?</p>
+                <div class="warning-text">Мошенники часто просят выключить это приложение</div>
+                <div style="margin-top: 15px;">
+                    <button class="btn-yes" id="confirmYes">ДА, ВЫКЛЮЧИТЬ</button>
+                    <button class="btn-no" id="confirmNo">НЕТ, ОСТАВИТЬ</button>
+                </div>`;
+        } else if (type === 'second') {
+            dialog.className = 'confirm-dialog danger';
+            html = `<p>🔴 МОШЕННИКИ МОГУТ ПРОДОЛЖАТЬ ЗВОНИТЬ</p>
+                <p>ВСЁ РАВНО ВЫКЛЮЧИТЬ ЗАЩИТУ?</p>
+                <div style="margin-top: 15px;">
+                    <button class="btn-yes" id="confirmYes">ДА, ВЫКЛЮЧИТЬ</button>
+                    <button class="btn-no" id="confirmNo">НЕТ, ОСТАВИТЬ</button>
+                </div>`;
+        } else if (type === 'final') {
+            dialog.className = 'confirm-dialog';
+            html = `<p>⚠️ ПОСЛЕДНЕЕ ПРЕДУПРЕЖДЕНИЕ</p>
+                <p>ВЫ ТОЧНО ХОТИТЕ ВЫКЛЮЧИТЬ ЗАЩИТУ?</p>
+                <div style="margin-top: 15px;">
+                    <button class="btn-yes" id="confirmYes">ПОДТВЕРЖДАЮ ВЫКЛЮЧЕНИЕ</button>
+                    <button class="btn-no" id="confirmNo">ОСТАВИТЬ ЗАЩИТУ</button>
+                </div>`;
+        }
+        dialog.innerHTML = html;
+        overlay.appendChild(dialog);
+        
+        const yesBtn = document.getElementById('confirmYes');
+        const noBtn = document.getElementById('confirmNo');
+        let isClicked = false;
+        
+        yesBtn?.addEventListener('click', () => {
+            if (isClicked) return; isClicked = true;
+            dialog.remove(); if (onYes) onYes();
+        });
+        noBtn?.addEventListener('click', () => {
+            if (isClicked) return; isClicked = true;
+            dialog.remove();
+            if (currentTimerInterval) clearInterval(currentTimerInterval);
+            showStopButtonStep1();
+        });
+    }
+    
+    function showEmergencyHelp() {
+        if (emergencyActive) return;
+        emergencyActive = true;
+        
+        const overlay = document.getElementById('emergencyOverlay');
+        const video = document.getElementById('aniskinVideo');
+        const textElement = document.querySelector('#emergencyOverlay .sos-text .command');
+        
+        overlay.style.display = 'flex';
+        overlay.style.opacity = '1';
+        
+        if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+        else if (document.documentElement.webkitRequestFullscreen) document.documentElement.webkitRequestFullscreen();
+        
+        video.play().catch(err => console.log('Ошибка видео:', err));
+        
+        const phrases = ["ЭТО МОШЕННИКИ!", "ПОЛОЖИТЕ ТРУБКУ!", "ВЫКЛЮЧИТЕ ТЕЛЕФОН!"];
+        let phraseIndex = 0;
+        const textInterval = setInterval(() => {
+            phraseIndex++;
+            if (phraseIndex < phrases.length && textElement) textElement.textContent = phrases[phraseIndex];
+        }, 1300);
+        
+        step1Timeout = setTimeout(() => {
+            clearInterval(textInterval);
+            if (textElement) textElement.textContent = "ВЫКЛЮЧИТЕ ТЕЛЕФОН!";
+            showStopButtonStep1();
+        }, 4000);
+    }
+    
+    function stopEmergencyHelpSmooth() {
+        const overlay = document.getElementById('emergencyOverlay');
+        const video = document.getElementById('aniskinVideo');
+        if (video) { video.pause(); video.currentTime = 0; }
+        if (step1Timeout) clearTimeout(step1Timeout);
+        if (step2Timeout) clearTimeout(step2Timeout);
+        if (step3Timeout) clearTimeout(step3Timeout);
+        if (currentTimerInterval) clearInterval(currentTimerInterval);
+        
+        overlay.style.transition = 'opacity 0.5s ease';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            overlay.style.opacity = '1';
+            overlay.style.transition = '';
+            if (document.exitFullscreen) document.exitFullscreen();
+        }, 500);
+        emergencyActive = false;
+        const buttonContainer = document.getElementById('stopButtonContainer');
+        if (buttonContainer) buttonContainer.innerHTML = '';
+    }
+    
+    function showExitInstructions() { document.getElementById('exitModal').style.display = 'flex'; }
+    function closeExitModal() { document.getElementById('exitModal').style.display = 'none'; }
+
+    // ========== АВТООТВЕТЧИК: 9 ФРАЗ ==========
+    const autoPhrases = [
+        { text: "Да... говорите, я слушаю...", hint: "💡 Спокойно слушайте. Автоответчик ведёт диалог.", color: "blue", audio: "audio/phrase1.mp3" },
+        { text: "Как вы сказали, меня зовут?", hint: "⚠️ Если не могут назвать имя — будьте осторожны.", color: "blue", audio: "audio/phrase2.mp3" },
+        { text: "Я не совсем понимаю, о чем речь. Объясните проще.", hint: "🤔 Настоящий сотрудник объяснит чётко.", color: "blue", audio: "audio/phrase3.mp3" },
+        { text: "Мне нужно подумать.", hint: "⏸️ Возьмите паузу. Не давайте ответ сразу.", color: "yellow", audio: "audio/phrase4.mp3" },
+        { text: "Мне нужно посоветоваться с родственниками.", hint: "👨‍👩‍👧‍👦 Мошенники теряют интерес при упоминании семьи.", color: "yellow", audio: "audio/phrase5.mp3" },
+        { text: "А напомните, пожалуйста, по какому вопросу вы звоните? А то я что-то путаю...", hint: "❓ Уточните тему. Настоящий собеседник ответит чётко.", color: "yellow", audio: "audio/phrase6.mp3" },
+        { text: "А напомните, пожалуйста, через кого вы меня нашли?", hint: "🔗 Мошенник не знает ваших знакомых. Будьте внимательны.", color: "yellow", audio: "audio/phrase7.mp3" },
+        { text: "Если официально — пришлите в личный кабинет или на почту.", hint: "🎯 Официальные организации могут отправить уведомление.", color: "red", audio: "audio/phrase8.mp3" },
+        { text: "Я всё проверю и вам перезвоню, если это будет актуально. До свидания!", hint: "✅ Вежливое завершение. Положите трубку.", color: "red", audio: "audio/phrase9.mp3" }
+    ];
+
+    function stopAutoAudio() {
+        if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null; }
+    }
+
+    function playAutoPhrase(step) {
+        stopAutoAudio();
+        const p = autoPhrases[step];
+        if (p?.audio) {
+            currentAudio = new Audio(p.audio);
+            currentAudio.volume = 1.0;
+            currentAudio.play().catch(e => console.log('🔊 Авто:', e));
+        }
+    }
+
+    function updateAutoUI() {
+        const p = autoPhrases[currentStep];
+        document.getElementById('autoVoice').innerText = `"${p.text}"`;
+        document.getElementById('autoHint').innerHTML = p.hint;
+        const screen = document.getElementById('autoScreen');
+        screen.style.background = p.color === 'blue' ? '#1e3a5f' : p.color === 'yellow' ? '#854d0e' : '#7f1d1d';
+        playAutoPhrase(currentStep);
+    }
+
+    function nextAutoPhrase() {
+        if (currentStep < autoPhrases.length - 1) { 
+            currentStep++; 
+            updateAutoUI(); 
+        } else {
+            stopAutoAudio();
+            showToast('✅ Вы прошли все шаги', 'success', 2000, () => closeSection());
+        }
+    }
+
+    function resetAuto() { stopAutoAudio(); currentStep = 0; updateAutoUI(); }
+    function openAutoResponder() { resetAuto(); openSection('autoresponder'); }
+
+    // ========== ОБЩИЕ ФУНКЦИИ ==========
+    function openSection(id) {
+        document.getElementById('main-menu').style.display = 'none';
+        document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+        document.getElementById('sec-' + id).style.display = 'block';
+        if(id === 'train') { currentTrainStep = 0; correctCount = 0; errorCount = 0; mistakes = []; showTrainStep(); }
+        if(id === 'check') { updateCheckUI(); loadRelativeNumber(); }
+        if(id === 'phrases') { renderPhrases(); }
+        if(id === 'help') { 
+            const url = window.location.href;
+            if (url.startsWith('file://')) {
+                document.getElementById('currentUrl').innerText = 'Ссылка появится после публикации сайта';
+            } else {
+                document.getElementById('currentUrl').innerText = url;
+            }
+        }
+    }
+
+    function closeSection() {
+        document.getElementById('main-menu').style.display = 'grid';
+        document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+        if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null; }
+        document.getElementById('audioIndicator').style.display = 'none';
+    }
+
+    // ========== АУДИО ДЛЯ ФРАЗ И УРОКОВ ==========
+    function playAudioFile(filename, phraseText, folder = 'audio1') {
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioIndicator = document.getElementById('audioIndicator');
+        const currentPhraseSpan = document.getElementById('currentPhrase');
+        if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null; }
+        document.querySelectorAll('.play-audio-btn').forEach(btn => { btn.classList.remove('playing'); btn.innerHTML = '🔊'; });
+        audioIndicator.style.display = 'block';
+        currentPhraseSpan.textContent = phraseText;
+        const audioPath = folder + '/' + filename;
+        audioPlayer.src = audioPath;
+        audioPlayer.play().then(() => { currentAudio = audioPlayer; }).catch(() => { 
+            audioIndicator.style.display = 'none'; 
+            showToast('Аудио не найдено: ' + filename, 'error', 3000);
+        });
+    }
+    document.getElementById('audioPlayer').addEventListener('ended', () => {
+        document.getElementById('audioIndicator').style.display = 'none';
+        document.querySelectorAll('.play-audio-btn').forEach(btn => { btn.classList.remove('playing'); btn.innerHTML = '🔊'; });
+    });
+
+    // ========== ПРОВЕРКА ЗВОНКА ==========
+    const checkFlags = [
+        "Собеседник сильно торопит с решением", "Просят назвать код из СМС", "Голос звучит неестественно (роботизированно)",
+        "Запрещают класть трубку и перезванивать", "Просят сохранить разговор в тайне", "Номер не сохраняется или скрыт",
+        "Звонят через мессенджер от имени банка", "Голос звучит слишком ровно или с механическими паузами (похоже на нейросеть)"
+    ];
+
+    function loadCheckSaved() {
+        const saved = localStorage.getItem("ai_shield_checks");
+        if (saved) { try { checks = JSON.parse(saved); if (checks.length !== 8) checks = [false, false, false, false, false, false, false, false]; } catch(e) {} }
+        updateCheckUI();
+    }
+    function saveCheckState() { localStorage.setItem("ai_shield_checks", JSON.stringify(checks)); }
+    function updateCheckUI() {
+        const container = document.getElementById('checklistContainer');
+        container.innerHTML = '';
+        checkFlags.forEach((flag, idx) => {
+            const div = document.createElement('div'); div.className = 'checklist-item';
+            div.onclick = (e) => { if(e.target.tagName !== 'INPUT') toggleCheck(idx); };
+            const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = checks[idx]; cb.onchange = () => toggleCheck(idx);
+            const span = document.createElement('span'); span.innerText = flag;
+            div.appendChild(cb); div.appendChild(span); container.appendChild(div);
+        });
+        const riskCount = checks.filter(c => c === true).length;
+        const riskPanel = document.getElementById('riskPanel');
+        const riskIcon = document.getElementById('riskIcon');
+        const riskText = document.getElementById('riskText');
+        const riskCountSpan = document.getElementById('riskCount');
+        if (riskCount === 0) { riskPanel.className = 'risk-panel risk-low'; riskIcon.innerText = '🟢'; riskText.innerText = 'Низкий риск'; }
+        else if (riskCount <= 2) { riskPanel.className = 'risk-panel risk-mid'; riskIcon.innerText = '🟡'; riskText.innerText = 'Средний риск, будьте внимательны'; }
+        else { riskPanel.className = 'risk-panel risk-high'; riskIcon.innerText = '🔴'; riskText.innerText = 'ВЫСОКИЙ РИСК! Вероятно, обман'; }
+        riskCountSpan.innerText = `${riskCount} из 8 признаков`;
+    }
+    function toggleCheck(idx) { checks[idx] = !checks[idx]; saveCheckState(); updateCheckUI(); }
+    function resetChecks() { checks = [false, false, false, false, false, false, false, false]; saveCheckState(); updateCheckUI(); }
+    function showPanicAlert() { 
+        showToast('🛑 Положите трубку! Не называйте кодов!', 'error', 4000); 
+    }
+    document.getElementById('panicCheckBtn')?.addEventListener('click', showPanicAlert);
+    document.getElementById('resetCheckBtn')?.addEventListener('click', resetChecks);
+
+    const phraseMap = { 'срочность': 0, 'код': 1, 'трубка': 3, 'секрет': 4, 'мессенджер': 6, 'голос': 7 };
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const phrase = btn.getAttribute('data-phrase');
+            const idx = phraseMap[phrase];
+            if (idx !== undefined && !checks[idx]) { checks[idx] = true; saveCheckState(); updateCheckUI(); showToast('Признак отмечен ✅', 'success', 1500); }
+        });
+    });
+
+    const STORAGE_KEY = 'ai_shield_relative_phone';
+    function loadRelativeNumber() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        const display = document.getElementById('savedNumberDisplay');
+        const callBtn = document.getElementById('relativeCallBtn');
+        if (saved && display && callBtn) {
+            document.getElementById('relativePhone').value = saved;
+            display.innerHTML = `✅ Сохранённый номер: <strong>${saved}</strong><br>Нажмите кнопку выше, чтобы позвонить.`;
+            callBtn.onclick = () => { window.location.href = `tel:${saved}`; };
+        } else if (display && callBtn) {
+            display.innerHTML = '❓ Нет сохранённого номера. Введите номер и нажмите "Сохранить".';
+            callBtn.onclick = () => { showToast('Сначала сохраните номер', 'info', 2500); };
+        }
+    }
+    document.getElementById('saveRelativeBtn')?.addEventListener('click', () => {
+        const phone = document.getElementById('relativePhone').value.trim();
+        if (phone) { localStorage.setItem(STORAGE_KEY, phone); loadRelativeNumber(); showToast('Номер сохранён! ✅', 'success', 2000); }
+        else showToast('Введите номер', 'error', 2000);
+    });
+
+    document.getElementById('clearDataBtn')?.addEventListener('click', () => {
+        localStorage.removeItem('ai_shield_checks');
+        localStorage.removeItem('ai_shield_relative_phone');
+        checks = [false, false, false, false, false, false, false, false];
+        updateCheckUI();
+        const result = document.getElementById('clearDataResult');
+        if (result) { result.style.display = 'block'; setTimeout(() => result.style.display = 'none', 5000); }
+        showToast('✅ Данные очищены!', 'success', 3000);
+    });
+
+    // ========== ТРЕНАЖЁР: 11 УРОКОВ ==========
+    const lessons = [
+        {q: "Звонят: 'Ваш внук в беде!'. Что сделаем?", a: [{t: "Сброшу и позвоню внуку", c:true}, {t: "Спрошу куда везти деньги", c:false}], audio: "question-001.mp3"},
+        {q: "Просят код из СМС для 'защиты счета'.", a: [{t: "Назову код", c:false}, {t: "Повешу трубку", c:true}], audio: "question-002.mp3"},
+        {q: "Звонок от 'капитана полиции' по WhatsApp.", a: [{t: "Сброшу, полиция так не звонит", c:true}, {t: "Буду оправдываться", c:false}], audio: "question-003.mp3"},
+        {q: "Вам говорят: 'Срок сим-карты кончается'.", a: [{t: "Это обман, сброшу", c:true}, {t: "Назову данные паспорта", c:false}], audio: "question-004.mp3"},
+        {q: "Просят установить программу RustDesk.", a: [{t: "Установлю", c:false}, {t: "Нет, это доступ к телефону", c:true}], audio: "question-005.mp3"},
+        {q: "Говорят: 'Ваш кабинет Госуслуг взломан'.", a: [{t: "Повешу трубку", c:true}, {t: "Назову пароль", c:false}], audio: "question-006.mp3"},
+        {q: "Вас просят перевести деньги на 'Безопасный счет'.", a: [{t: "Таких счетов не бывает", c:true}, {t: "Переведу", c:false}], audio: "question-007.mp3"},
+        {q: "Вам прислали 'выплату от президента' по ссылке.", a: [{t: "Нажму на ссылку", c:false}, {t: "Удалю сообщение", c:true}], audio: "question-008.mp3"},
+        {q: "Звонят из ЖКХ: 'У вас долг, платите сейчас'.", a: [{t: "Оплачу картой", c:false}, {t: "Повешу трубку", c:true}], audio: "question-009.mp3"},
+        {q: "Вы случайно назвали код. Что делать?", a: [{t: "Срочно звонить в банк самому", c:true}, {t: "Ждать", c:false}], audio: "question-010.mp3"},
+        {q: "Звонит 'внук' и просит деньги. Вы договорились о секретном слове. Что спросить?", a: [{t: "Назови наше секретное слово", c:true}, {t: "Сколько тебе нужно?", c:false}], audio: "question-011.mp3"}
+    ];
+    
+    function updateProgress() { document.getElementById('progressFill').style.width = (currentTrainStep / lessons.length) * 100 + '%'; }
+    function showTrainStep() {
+        if(currentTrainStep >= lessons.length) {
+            const resultDiv = document.getElementById('trainResult');
+            let html = errorCount === 0 ? '<p style="color:#16a34a;font-weight:bold;">🎉 Отлично! Все 11 ответов верны!</p>' :
+                `<p>📊 Правильно: ${correctCount} | Ошибок: ${errorCount}</p><div style="margin-top:15px">${mistakes.map(m => `<div class="error-item"><strong>❌ Вопрос:</strong> ${m.question}<br><strong>Ваш ответ:</strong> ${m.chosenAnswer}<br><strong>Правильно:</strong> ${m.correctAnswer}</div>`).join('')}</div>`;
+            resultDiv.innerHTML = html + '<button class="reset-btn" onclick="resetTrainer()">🔄 ПРОЙТИ ЗАНОВО</button>';
+            document.getElementById('train-options').innerHTML = '';
+            document.getElementById('train-title').innerText = '🎓 ОБУЧЕНИЕ ЗАВЕРШЕНО';
+            document.getElementById('train-q').innerText = '';
+            showToast('✅ Тренажёр завершён!', 'success', 2500, () => closeSection());
+            return;
+        }
+        updateProgress();
+        document.getElementById('trainResult').innerHTML = '';
+        const l = lessons[currentTrainStep];
+        document.getElementById('train-title').innerText = `Урок ${currentTrainStep+1} из ${lessons.length}`;
+        document.getElementById('train-q').innerText = l.q;
+        if (l.audio) playAudioFile(l.audio, l.q, 'audio2');
+        const optDiv = document.getElementById('train-options');
+        optDiv.innerHTML = '';
+        l.a.forEach(ans => {
+            const b = document.createElement('button'); b.className = 'option-btn'; b.innerText = ans.t;
+            b.onclick = () => {
+                if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null; }
+                document.getElementById('audioIndicator').style.display = 'none';
+                if (ans.c) { b.classList.add('correct-flash'); correctCount++; showToast('✅ Правильно!', 'success', 1200); }
+                else { b.classList.add('wrong-flash'); errorCount++; mistakes.push({ question: l.q, chosenAnswer: ans.t, correctAnswer: l.a.find(a => a.c === true).t }); showToast('❌ Попробуйте ещё', 'error', 1200); }
+                setTimeout(() => { currentTrainStep++; showTrainStep(); }, 700);
+            };
+            optDiv.appendChild(b);
+        });
+    }
+    function resetTrainer() { currentTrainStep = 0; correctCount = 0; errorCount = 0; mistakes = []; showTrainStep(); }
+
+    // ========== ОПАСНЫЕ ФРАЗЫ: 20 ШТУК ==========
+    const phrasesData = [
+        "Безопасный счет", "Срок действия сим-карты", "Подозрительная операция", "Код из СМС", "Следственный комитет",
+        "Ваш личный кабинет взломан", "Родственник в больнице", "Статья о госизмене", "Зеркальный займ", "Установите приложение",
+        "Перерасчет пенсии", "Запись к врачу", "Ошибка перевода", "Проверка газового оборудования", "Назовите СНИЛС",
+        "Секретный отдел ЦБ", "Ваш телефон заблокируют", "Договор истекает", "Помощь в поимке преступника", "Никому не говорите об этом звонке"
+    ];
+    function renderPhrases() {
+        const div = document.getElementById('phrases-list');
+        div.innerHTML = '';
+        phrasesData.forEach((p, i) => {
+            const itemDiv = document.createElement('div'); itemDiv.className = 'phrase-item';
+            const span = document.createElement('span'); span.innerText = `${i+1}. ${p}`; span.style.flex = '1';
+            const btn = document.createElement('button'); btn.className = 'play-audio-btn'; btn.innerHTML = '🔊';
+            btn.onclick = (e) => { e.stopPropagation(); playAudioFile(`phrase-${(i+1).toString().padStart(3,'0')}.mp3`, p, 'audio1'); };
+            itemDiv.appendChild(span); itemDiv.appendChild(btn);
+            itemDiv.onclick = () => playAudioFile(`phrase-${(i+1).toString().padStart(3,'0')}.mp3`, p, 'audio1');
+            div.appendChild(itemDiv);
+        });
+    }
+
+    // ========== ОБРАБОТЧИКИ ==========
+    document.getElementById('shareBtn')?.addEventListener('click', shareLink);
+    document.getElementById('activateSosBtn')?.addEventListener('click', showEmergencyHelp);
+    document.getElementById('autoNextBtn')?.addEventListener('click', nextAutoPhrase);
+    document.getElementById('autoStopBtn')?.addEventListener('click', () => { 
+        stopAutoAudio(); 
+        showToast('Автоответчик выключен', 'info', 1500, () => closeSection()); 
+    });
+    
+    // Service Worker для оффлайн-работы
+    if('serviceWorker' in navigator) {
+        const swCode = `self.addEventListener('install', e => e.waitUntil(caches.open('v10').then(c => c.addAll(['/', location.href]))));
+        self.addEventListener('fetch', e => e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))));`;
+        navigator.serviceWorker.register(URL.createObjectURL(new Blob([swCode], {type:'text/javascript'})));
+    }
+
+    // Инициализация
+    loadCheckSaved();
+</script>
+</body>
+</html>
