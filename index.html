@@ -473,7 +473,6 @@
             .support-card p { color: #fed7aa; }
             .phone-number { background: #1e293b; }
             .phone-number .big-number { color: #fde68a; }
-            .footer-version { border-top-color: #334155; color: #94a3b8; }
         }
         
         @media (max-width: 480px) {
@@ -487,6 +486,45 @@
     </style>
 </head>
 <body>
+
+<!-- ✅ ИНДИКАТОР ЗАГРУЗКИ ОФЛАЙН-КЭША -->
+<div id="offlineLoader" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0f172a;
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: system-ui;
+    transition: opacity 0.5s;
+">
+    <div style="
+        width: 80px;
+        height: 80px;
+        border: 4px solid rgba(255,255,255,0.2);
+        border-top: 4px solid #22c55e;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 24px;
+    "></div>
+    <div style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">🛡️ Анти-ИИ Щит</div>
+    <div style="font-size: 14px; color: #94a3b8; margin-bottom: 12px;">Загрузка защитных файлов...</div>
+    <div style="font-size: 13px; color: #22c55e; font-family: monospace;" id="loadProgress">0 из 40</div>
+    <div style="font-size: 11px; color: #475569; margin-top: 20px;">Первый запуск требует интернета</div>
+</div>
+
+<style>
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 
 <!-- SOS ОВЕРЛЕЙ -->
 <div id="emergencyOverlay">
@@ -1223,91 +1261,65 @@
         } 
     });
     
-    // ✅ Регистрация Service Worker + индикатор загрузки
+    // ✅ Регистрация Service Worker с индикатором загрузки
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            // Создаём индикатор
-            const indicator = document.createElement('div');
-            indicator.id = 'swLoadingIndicator';
-            indicator.style.cssText = `
-                position: fixed; top: 0; left: 0; right: 0;
-                background: #16a34a; color: white;
-                padding: 12px 20px; font-size: 14px; font-weight: bold;
-                text-align: center; z-index: 9999;
-                display: none; animation: slideDown 0.3s ease;
-            `;
-            indicator.innerHTML = '🛡️ Защита загружается... (10-30 сек)';
-            document.body.insertBefore(indicator, document.body.firstChild);
-            
-            // Добавляем анимацию
-            const style = document.createElement('style');
-            style.textContent = `@keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }`;
-            document.head.appendChild(style);
+            const loader = document.getElementById('offlineLoader');
+            const progressSpan = document.getElementById('loadProgress');
+            let filesCached = 0;
+            const totalFiles = 40; // общее количество файлов для кэша
             
             navigator.serviceWorker.register('/sw.js')
                 .then(reg => {
                     console.log('✅ Service Worker зарегистрирован');
                     
-                    // Если сразу установлен — показываем готовность
-                    if (reg.active) {
-                        showReadyIndicator();
-                    }
-                    
-                    reg.addEventListener('updatefound', () => {
-                        const newWorker = reg.installing;
-                        console.log('🔄 Началась загрузка защиты...');
-                        indicator.style.display = 'block';
-                        
-                        newWorker.addEventListener('statechange', () => {
-                            if (newWorker.state === 'installed') {
-                                // Небольшая задержка чтобы браузер успел сохранить кэш
-                                setTimeout(() => {
-                                    indicator.style.display = 'none';
-                                    showReadyIndicator();
-                                    console.log('🎉 Защита заряжена!');
-                                }, 2000);
+                    // Следим за установкой Service Worker
+                    if (reg.installing) {
+                        console.log('🔄 Установка Service Worker...');
+                        reg.installing.addEventListener('statechange', () => {
+                            if (reg.installing.state === 'installed') {
+                                console.log('✅ Service Worker установлен, кэширование начато');
                             }
                         });
-                    });
+                    }
+                    
+                    // Проверяем кэш каждую секунду
+                    const checkCacheInterval = setInterval(() => {
+                        caches.open('ai-shield-v5').then(cache => {
+                            cache.keys().then(keys => {
+                                filesCached = keys.length;
+                                if (progressSpan) {
+                                    progressSpan.innerText = `${filesCached} из ${totalFiles}`;
+                                }
+                                // Когда все файлы закэшированы — скрываем индикатор
+                                if (filesCached >= totalFiles) {
+                                    clearInterval(checkCacheInterval);
+                                    if (loader) {
+                                        loader.style.opacity = '0';
+                                        setTimeout(() => {
+                                            loader.style.display = 'none';
+                                        }, 500);
+                                    }
+                                    console.log('🎉 Все файлы закэшированы!');
+                                }
+                            });
+                        });
+                    }, 500);
+                    
+                    // Запасной таймер: скрыть индикатор через 30 секунд
+                    setTimeout(() => {
+                        if (loader && loader.style.display !== 'none') {
+                            loader.style.opacity = '0';
+                            setTimeout(() => {
+                                loader.style.display = 'none';
+                            }, 500);
+                            console.log('⏰ Таймаут: индикатор скрыт');
+                        }
+                        clearInterval(checkCacheInterval);
+                    }, 30000);
                 })
-                .catch(err => {
-                    console.log('❌ Ошибка регистрации:', err);
-                    indicator.style.display = 'none';
-                });
+                .catch(err => console.log('❌ Ошибка регистрации:', err));
         });
-    }
-
-    // Показываем уведомление "Готово"
-    function showReadyIndicator() {
-        // Проверяем чтобы не показывать много раз
-        if (sessionStorage.getItem('shieldReadyShown')) return;
-        
-        const toast = document.createElement('div');
-        toast.style.cssText = `
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: #16a34a; color: white;
-            padding: 14px 24px; border-radius: 50px;
-            font-size: 14px; font-weight: bold;
-            z-index: 10000; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            animation: fadeInUp 0.3s ease;
-        `;
-        toast.innerHTML = '✅ Защита заряжена! Теперь работает без интернета 🛡️';
-        document.body.appendChild(toast);
-        
-        // Анимация
-        const style = document.createElement('style');
-        style.textContent = `@keyframes fadeInUp { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }`;
-        document.head.appendChild(style);
-        
-        // Скрыть через 5 секунд
-        setTimeout(() => {
-            toast.style.transition = 'opacity 0.3s ease';
-            toast.style.opacity = '0';
-            setTimeout(() => toast.remove(), 300);
-        }, 5000);
-        
-        // Запоминаем что показали
-        sessionStorage.setItem('shieldReadyShown', 'true');
     }
 
     // Инициализация
