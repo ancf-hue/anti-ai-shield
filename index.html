@@ -1261,26 +1261,26 @@
         } 
     });
     
-    // ✅ Service Worker регистрация с фоновым индикатором
+    // ========== SERVICE WORKER С ФОНОВЫМ ИНДИКАТОРОМ ==========
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             const loader = document.getElementById('offlineLoader');
             const progressSpan = document.getElementById('loadProgressText');
             const percentSpan = document.getElementById('loadPercent');
             const totalFiles = 40;
-            let filesCached = 0;
             let hideTimeout = null;
+            let checkInterval = null;
             
             navigator.serviceWorker.register('/sw.js')
                 .then(reg => {
                     console.log('✅ Service Worker зарегистрирован');
                     
-                    // Проверяем кэш каждые 800 мс
-                    const checkCacheInterval = setInterval(() => {
+                    // Проверяем кэш каждую секунду
+                    checkInterval = setInterval(() => {
                         caches.open('ai-shield-v5').then(cache => {
                             cache.keys().then(keys => {
-                                filesCached = keys.length;
-                                const percent = Math.round((filesCached / totalFiles) * 100);
+                                const filesCached = keys.length;
+                                const percent = Math.min(100, Math.round((filesCached / totalFiles) * 100));
                                 
                                 if (progressSpan) {
                                     if (filesCached < totalFiles) {
@@ -1293,9 +1293,9 @@
                                     percentSpan.innerText = percent + '%';
                                 }
                                 
-                                // Когда всё загружено — скрываем через 2 секунды
+                                // Когда всё загружено
                                 if (filesCached >= totalFiles) {
-                                    clearInterval(checkCacheInterval);
+                                    if (checkInterval) clearInterval(checkInterval);
                                     if (loader) {
                                         if (progressSpan) progressSpan.innerText = 'Готово ✓';
                                         if (percentSpan) percentSpan.innerText = '100%';
@@ -1306,10 +1306,10 @@
                                             }, 300);
                                         }, 2000);
                                     }
-                                    console.log('🎉 Все файлы закэшированы!');
+                                    console.log('🎉 Все 40+ файлов закэшированы!');
                                 }
                             });
-                        });
+                        }).catch(err => console.log('Кэш ещё не открыт:', err));
                     }, 800);
                     
                     // Запасной таймер: скрыть через 60 секунд
@@ -1320,10 +1320,16 @@
                                 loader.style.display = 'none';
                             }, 300);
                         }
-                        clearInterval(checkCacheInterval);
+                        if (checkInterval) clearInterval(checkInterval);
                     }, 60000);
                 })
-                .catch(err => console.log('❌ Ошибка регистрации:', err));
+                .catch(err => {
+                    console.log('❌ Ошибка регистрации Service Worker:', err);
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => { loader.style.display = 'none'; }, 300);
+                    }
+                });
         });
     }
 
