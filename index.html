@@ -487,36 +487,36 @@
 </head>
 <body>
 
-<!-- ✅ ИНДИКАТОР ЗАГРУЗКИ ОФЛАЙН-КЭША -->
+<!-- ✅ МИНИ-ИНДИКАТОР ЗАГРУЗКИ (не блокирует интерфейс) -->
 <div id="offlineLoader" style="
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #0f172a;
-    z-index: 100000;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 40px;
+    padding: 8px 16px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    font-size: 12px;
     color: white;
     font-family: system-ui;
-    transition: opacity 0.5s;
+    transition: opacity 0.3s;
+    pointer-events: none;
 ">
     <div style="
-        width: 80px;
-        height: 80px;
-        border: 4px solid rgba(255,255,255,0.2);
-        border-top: 4px solid #22c55e;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-top: 2px solid #22c55e;
         border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin-bottom: 24px;
+        animation: spin 0.8s linear infinite;
     "></div>
-    <div style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">🛡️ Анти-ИИ Щит</div>
-    <div style="font-size: 14px; color: #94a3b8; margin-bottom: 12px;">Загрузка защитных файлов...</div>
-    <div style="font-size: 13px; color: #22c55e; font-family: monospace;" id="loadProgress">0 из 40</div>
-    <div style="font-size: 11px; color: #475569; margin-top: 20px;">Первый запуск требует интернета</div>
+    <span id="loadProgressText">Зарядка защиты</span>
+    <span style="font-size: 10px; color: #94a3b8;" id="loadPercent">0%</span>
 </div>
 
 <style>
@@ -1261,62 +1261,67 @@
         } 
     });
     
-    // ✅ Регистрация Service Worker с индикатором загрузки
+    // ✅ Service Worker регистрация с фоновым индикатором
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             const loader = document.getElementById('offlineLoader');
-            const progressSpan = document.getElementById('loadProgress');
+            const progressSpan = document.getElementById('loadProgressText');
+            const percentSpan = document.getElementById('loadPercent');
+            const totalFiles = 40;
             let filesCached = 0;
-            const totalFiles = 40; // общее количество файлов для кэша
+            let hideTimeout = null;
             
             navigator.serviceWorker.register('/sw.js')
                 .then(reg => {
                     console.log('✅ Service Worker зарегистрирован');
                     
-                    // Следим за установкой Service Worker
-                    if (reg.installing) {
-                        console.log('🔄 Установка Service Worker...');
-                        reg.installing.addEventListener('statechange', () => {
-                            if (reg.installing.state === 'installed') {
-                                console.log('✅ Service Worker установлен, кэширование начато');
-                            }
-                        });
-                    }
-                    
-                    // Проверяем кэш каждую секунду
+                    // Проверяем кэш каждые 800 мс
                     const checkCacheInterval = setInterval(() => {
                         caches.open('ai-shield-v5').then(cache => {
                             cache.keys().then(keys => {
                                 filesCached = keys.length;
+                                const percent = Math.round((filesCached / totalFiles) * 100);
+                                
                                 if (progressSpan) {
-                                    progressSpan.innerText = `${filesCached} из ${totalFiles}`;
+                                    if (filesCached < totalFiles) {
+                                        progressSpan.innerText = 'Зарядка защиты';
+                                    } else {
+                                        progressSpan.innerText = 'Защита заряжена ✓';
+                                    }
                                 }
-                                // Когда все файлы закэшированы — скрываем индикатор
+                                if (percentSpan) {
+                                    percentSpan.innerText = percent + '%';
+                                }
+                                
+                                // Когда всё загружено — скрываем через 2 секунды
                                 if (filesCached >= totalFiles) {
                                     clearInterval(checkCacheInterval);
                                     if (loader) {
-                                        loader.style.opacity = '0';
-                                        setTimeout(() => {
-                                            loader.style.display = 'none';
-                                        }, 500);
+                                        if (progressSpan) progressSpan.innerText = 'Готово ✓';
+                                        if (percentSpan) percentSpan.innerText = '100%';
+                                        hideTimeout = setTimeout(() => {
+                                            loader.style.opacity = '0';
+                                            setTimeout(() => {
+                                                loader.style.display = 'none';
+                                            }, 300);
+                                        }, 2000);
                                     }
                                     console.log('🎉 Все файлы закэшированы!');
                                 }
                             });
                         });
-                    }, 500);
+                    }, 800);
                     
-                    // Запасной таймер: скрыть индикатор через 30 секунд
+                    // Запасной таймер: скрыть через 60 секунд
                     setTimeout(() => {
                         if (loader && loader.style.display !== 'none') {
                             loader.style.opacity = '0';
                             setTimeout(() => {
                                 loader.style.display = 'none';
-                            }, 500);
-                            console.log('⏰ Таймаут: индикатор скрыт');
+                            }, 300);
                         }
                         clearInterval(checkCacheInterval);
-                    }, 30000);
+                    }, 60000);
                 })
                 .catch(err => console.log('❌ Ошибка регистрации:', err));
         });
