@@ -7,7 +7,6 @@
   "orientation": "portrait",
   "background_color": "#f1f5f9",
   "theme_color": "#1e293b",
-  "status_bar": "default",
   "categories": ["security", "education", "utilities"],
   "lang": "ru",
   "dir": "ltr",
@@ -24,31 +23,5 @@
       "type": "image/jpeg",
       "purpose": "any maskable"
     }
-  ],
-  "screenshots": [
-    {
-      "src": "screenshot1.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "wide"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Автоответчик",
-      "short_name": "Авто",
-      "description": "Быстрый запуск автоответчика",
-      "url": "/?action=auto",
-      "icons": [{ "src": "logo.jpeg", "sizes": "96x96" }]
-    },
-    {
-      "name": "Мне страшно",
-      "short_name": "SOS",
-      "description": "Экстренная защита",
-      "url": "/?action=sos",
-      "icons": [{ "src": "logo.jpeg", "sizes": "96x96" }]
-    }
-  ],
-  "prefer_related_applications": false,
-  "related_applications": []
+  ]
 }
