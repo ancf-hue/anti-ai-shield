@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Анти-ИИ Щит | Защита от мошенников</title>
-    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+    
+    <!-- FAVICON - исправлено -->
+    <link rel="icon" type="image/x-icon" href="icon-512.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="icon-512.ico">
+    <link rel="apple-touch-icon" href="icon-512.ico">
+    
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#1e293b">
     <meta name="description" content="Бесплатная защита от телефонных мошенников. Автоответчик, SOS-режим, ИИ-анализатор угроз, тренажёры.">
@@ -163,58 +168,6 @@
         .btn-copy { background: #2563eb; color: white; border: none; border-radius: 60px; padding: 10px 20px; font-size: 14px; font-weight: bold; cursor: pointer; }
         .btn-copy:active { transform: scale(0.96); }
         
-        .project-links {
-            background: white;
-            border-radius: 20px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: left;
-        }
-        .project-links h3 {
-            font-size: 18px;
-            margin: 0 0 12px 0;
-            color: #1e293b;
-            text-align: center;
-        }
-        .project-link-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px;
-            margin: 8px 0;
-            background: #f8fafc;
-            border-radius: 16px;
-            text-decoration: none;
-            transition: 0.05s linear;
-            border: 1px solid #e2e8f0;
-        }
-        .project-link-item:active {
-            transform: scale(0.98);
-            background: #e2e8f0;
-        }
-        .project-icon {
-            font-size: 28px;
-            min-width: 45px;
-            text-align: center;
-        }
-        .project-info {
-            flex: 1;
-        }
-        .project-name {
-            font-weight: bold;
-            font-size: 16px;
-            color: #2563eb;
-        }
-        .project-desc {
-            font-size: 12px;
-            color: #64748b;
-            margin-top: 4px;
-        }
-        .project-arrow {
-            font-size: 18px;
-            color: #94a3b8;
-        }
-        
         #audioIndicator { display: none; background: #dbeafe; border: 2px solid #3b82f6; border-radius: 12px; padding: 10px; margin-bottom: 16px; text-align: center; font-weight: bold; font-size: 14px; color: #1e40af; }
         
         .phone-btn { width: 100%; padding: 14px; border: none; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 12px; box-shadow: 0 4px 0 #94a3b8; }
@@ -263,8 +216,6 @@
             .panic-btn { height: 80px; font-size: 18px; margin-bottom: 20px; }
             .section { padding: 20px; }
             .sos-text .command { font-size: 1.2rem; }
-            .project-name { font-size: 14px; }
-            .project-desc { font-size: 10px; }
         }
         
         @media (prefers-color-scheme: dark) {
@@ -280,10 +231,6 @@
             .menu-btn { box-shadow: 0 6px 0 #0f172a, 0 0 0 2px rgba(255,255,255,0.05); }
             .checklist-item { border: 1px solid #475569; }
             #threatText { background: #0f172a; color: #e2e8f0; border-color: #475569; }
-            .project-links { background: #334155; }
-            .project-links h3 { color: #e2e8f0; }
-            .project-link-item { background: #1e293b; border-color: #475569; }
-            .project-name { color: #60a5fa; }
         }
     </style>
 </head>
@@ -318,7 +265,7 @@
         <button class="menu-btn btn-auto" onclick="openAutoResponder()">🗣️ АВТООТВЕТЧИК</button>
         <button class="menu-btn btn-ai" onclick="openSection('ai')">🧠 ИИ: АНАЛИЗ УГРОЗЫ</button>
         <button class="menu-btn btn-exercises" onclick="openSection('exercises')">🎓 УПРАЖНЕНИЯ</button>
-        <button class="menu-btn btn-support" onclick="openSection('support')">🤝 ПОДДЕРЖАТЬ ПРОЕКТ</button>
+        <button class="menu-btn btn-support" onclick="openSection('support')">💰 ПОДДЕРЖАТЬ ПРОЕКТ</button>
         <button class="menu-btn btn-exit" onclick="showExitInstructions()">🚪 ВЫЙТИ</button>
     </div>
 
@@ -331,7 +278,7 @@
             <p><strong>🧠 ИИ: АНАЛИЗ УГРОЗЫ</strong> — вставьте текст сообщения, ИИ определит мошенника.</p>
             <p><strong>⚠️ МНЕ СТРАШНО</strong> — красный экран с инструкцией, кнопка СТОП с таймером.</p>
             <p><strong>🎓 УПРАЖНЕНИЯ</strong> — 11 уроков, 20 опасных фраз, чек-лист.</p>
-            <p><strong>🤝 ПОДДЕРЖАТЬ ПРОЕКТ</strong> — добровольные пожертвования и другие проекты.</p>
+            <p><strong>💰 ПОДДЕРЖАТЬ ПРОЕКТ</strong> — добровольные пожертвования.</p>
             <div class="water-tip">💧 Совет: выпейте воды перед сложным разговором</div>
         </div>
         <div class="legal"><strong>⚠️ Важная информация:</strong><br>• Приложение информационное, не гарантирует защиту.<br>• Решения вы принимаете самостоятельно.<br>• Приложение не собирает персональные данные.<br>• При подозрении звоните 102 или 112.</div>
@@ -414,73 +361,22 @@
         <button class="back-btn" onclick="closeSection()">🏠 НАЗАД</button>
     </div>
 
-    <!-- РАЗДЕЛ: ПОДДЕРЖКА (с ссылками на проекты) -->
+    <!-- РАЗДЕЛ: ПОДДЕРЖКА -->
     <div id="sec-support" class="section">
         <div class="page-logo"><img src="logo.jpeg" alt="Анти-ИИ Щит" onerror="this.style.display='none'"></div>
         <div class="support-card">
-            <h2>🤝 ПОДДЕРЖАТЬ ПРОЕКТ</h2>
+            <h2>АНТИ-ИИ ЩИТ — БЕСПЛАТНО НАВСЕГДА</h2>
             <div style="text-align: center; margin: 15px 0;"><div style="font-size: 40px; margin-bottom: 8px;">💙</div><p style="font-size: 16px; font-weight: bold;">Приложение бесплатное. Было и останется.</p></div>
             <p>Если проект помог вам или вашим близким — можете поддержать разработку добровольным переводом.</p>
             <div class="phone-number"><div>📱 ПЕРЕВОД ПО НОМЕРУ ТЕЛЕФОНА:</div><div class="big-number">8-920-227-56-76</div><button class="btn-copy" onclick="copyPhoneNumber()">📋 Копировать номер</button></div>
             <div style="background: #dcfce7; border-radius: 16px; padding: 10px; margin: 15px 0;"><p style="margin: 4px 0; font-size: 13px; color: #166534;">✅ Деньги придут мгновенно. Без комиссии. Безопасно.</p></div>
             <p>❤️ Спасибо за поддержку!</p>
         </div>
-        
-        <!-- БЛОК С ДРУГИМИ ПРОЕКТАМИ -->
-        <div class="project-links">
-            <h3>🌟 ДРУГИЕ НАШИ ПРОЕКТЫ</h3>
-            
-            <a href="https://anti-bullying-app-one.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link-item">
-                <div class="project-icon">🛡️</div>
-                <div class="project-info">
-                    <div class="project-name">Защита от Школьного буллинга</div>
-                    <div class="project-desc">Помощь детям и подросткам противостоять травле</div>
-                </div>
-                <div class="project-arrow">➡️</div>
-            </a>
-            
-            <a href="https://anti-ai-animals.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link-item">
-                <div class="project-icon">🐾</div>
-                <div class="project-info">
-                    <div class="project-name">Анти ИИ: Животные поют</div>
-                    <div class="project-desc">Уникальные голоса животных в музыкальной обработке</div>
-                </div>
-                <div class="project-arrow">➡️</div>
-            </a>
-            
-            <a href="https://anti-ai-stress.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link-item">
-                <div class="project-icon">🧘</div>
-                <div class="project-info">
-                    <div class="project-name">Анти-ИИ Стресс</div>
-                    <div class="project-desc">Техники релаксации и борьбы со стрессом</div>
-                </div>
-                <div class="project-arrow">➡️</div>
-            </a>
-            
-            <a href="https://anti-ai-barcode.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link-item">
-                <div class="project-icon">📱</div>
-                <div class="project-info">
-                    <div class="project-name">Анти ИИ Штрих-код</div>
-                    <div class="project-desc">Защита данных через QR и штрих-коды</div>
-                </div>
-                <div class="project-arrow">➡️</div>
-            </a>
-            
-            <a href="https://rutube.ru/channel/24404224/" target="_blank" rel="noopener noreferrer" class="project-link-item">
-                <div class="project-icon">✨</div>
-                <div class="project-info">
-                    <div class="project-name">ВолшебствО</div>
-                    <div class="project-desc">Магический канал с удивительным контентом</div>
-                </div>
-                <div class="project-arrow">➡️</div>
-            </a>
-        </div>
-        
         <button class="back-btn" onclick="closeSection()">🏠 НАЗАД</button>
     </div>
 </div>
 
-<div class="footer-version"><span>Анти-ИИ Щит | v4.2 | Offline Ready</span></div>
+<div class="footer-version"><span>Анти-ИИ Щит | v4.1 | Offline Ready</span></div>
 
 <div id="exitModal">
     <div class="exit-card">
@@ -521,6 +417,19 @@
     function copyPhoneNumber() {
         const phone = "8-920-227-56-76";
         navigator.clipboard.writeText(phone).then(() => alert("Номер скопирован!")).catch(() => alert("Не удалось скопировать"));
+    }
+    
+    function copyCurrentUrl() {
+        const url = window.location.href;
+        if (url.startsWith('file://')) { alert("Ссылка появится после публикации"); return; }
+        navigator.clipboard.writeText(url).then(() => alert("Ссылка скопирована!")).catch(() => alert("Не удалось скопировать"));
+    }
+    
+    async function shareLink() {
+        const url = window.location.href;
+        if (url.startsWith('file://')) { alert("Поделиться можно после публикации"); return; }
+        if (navigator.share) try { await navigator.share({ title: 'Анти-ИИ Щит', text: 'Защита от мошенников', url }); } catch(e) {}
+        else { await navigator.clipboard.writeText(url); alert('Ссылка скопирована!'); }
     }
 
     // ========== SOS РЕЖИМ ==========
@@ -671,11 +580,13 @@
         audioPlayer.onerror = () => {
             audioIndicator.style.display = 'none';
             btns.forEach(btn => btn.classList.remove('loading'));
+            alert(`⚠️ Не удалось загрузить аудио: ${filename}\nПроверьте подключение или попробуйте позже.`);
             console.error('Audio load error:', filename, folder);
         };
         
         audioPlayer.play().then(() => { currentAudio = audioPlayer; }).catch(() => { 
             audioIndicator.style.display = 'none'; 
+            alert('Аудиофайл не найден: ' + audioPath); 
         });
     }
     
@@ -693,6 +604,7 @@
         updateCheckUI(); 
     }
     function saveCheckState() { localStorage.setItem("ai_shield_checks", JSON.stringify(checks)); }
+    function saveCheckProgress() { sessionStorage.setItem('ai_shield_check_progress', JSON.stringify(checks)); }
     
     function updateCheckUI() {
         const container = document.getElementById('checklistContainer');
@@ -718,17 +630,18 @@
     function toggleCheck(idx) { 
         checks[idx] = !checks[idx]; 
         saveCheckState(); 
+        saveCheckProgress();
         updateCheckUI(); 
     }
     
-    function resetChecks() { checks = [false,false,false,false,false,false,false,false]; saveCheckState(); updateCheckUI(); }
+    function resetChecks() { checks = [false,false,false,false,false,false,false,false]; saveCheckState(); saveCheckProgress(); updateCheckUI(); }
     function showPanicAlert() { alert("🛑 СТОП!\n\n1. Положите трубку.\n2. Не называйте кодов.\n3. Перезвоните родственнику.\n4. Выпейте воды."); }
     
     document.getElementById('panicCheckBtn')?.addEventListener('click', showPanicAlert);
     document.getElementById('resetCheckBtn')?.addEventListener('click', resetChecks);
 
     const phraseMap = { 'срочность':0, 'код':1, 'трубка':3, 'секрет':4, 'мессенджер':6, 'голос':7 };
-    document.querySelectorAll('.quick-btn').forEach(btn => { btn.addEventListener('click', () => { const idx = phraseMap[btn.getAttribute('data-phrase')]; if (idx !== undefined && !checks[idx]) { checks[idx] = true; saveCheckState(); updateCheckUI(); } }); });
+    document.querySelectorAll('.quick-btn').forEach(btn => { btn.addEventListener('click', () => { const idx = phraseMap[btn.getAttribute('data-phrase')]; if (idx !== undefined && !checks[idx]) { checks[idx] = true; saveCheckState(); saveCheckProgress(); updateCheckUI(); } }); });
 
     const STORAGE_KEY = 'ai_shield_relative_phone';
     function loadRelativeNumber() {
@@ -817,12 +730,17 @@
         });
     }
 
-    // ========== ИИ-АНАЛИЗАТОР УГРОЗ ==========
+    // ========== ИИ-АНАЛИЗАТОР УГРОЗ (с валидацией) ==========
     function analyzeThreat() {
         trackUsage('ai_analyzed');
         let input = document.getElementById('threatText').value;
         
-        let sanitized = input.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '').replace(/javascript:/gi, '').replace(/on\w+=/gi, '').slice(0, 2000);
+        // Санитизация и валидация
+        let sanitized = input
+            .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+            .replace(/javascript:/gi, '')
+            .replace(/on\w+=/gi, '')
+            .slice(0, 2000);
         
         if (!sanitized.trim()) {
             document.getElementById('aiResult').innerHTML = "⚠️ Введите текст сообщения или опишите звонок для анализа.";
@@ -860,15 +778,19 @@
     }
 
     // ========== ОБРАБОТЧИКИ ==========
+    document.getElementById('shareBtn')?.addEventListener('click', shareLink);
     document.getElementById('activateSosBtn')?.addEventListener('click', showEmergencyHelp);
     document.getElementById('autoNextBtn')?.addEventListener('click', nextAutoPhrase);
     document.getElementById('autoStopBtn')?.addEventListener('click', () => { if (confirm('Завершить автоответчик?')) { stopAutoAudio(); closeSection(); } });
     document.getElementById('analyzeBtn')?.addEventListener('click', analyzeThreat);
     
-    // Service Worker
+    // Восстановление прогресса при возврате на страницу
+    window.addEventListener('pageshow', (e) => { if (e.persisted) loadCheckSaved(); });
+    
+    // Service Worker (обновлённая версия)
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW error:', err));
+            navigator.serviceWorker.register('/sw.js').then(reg => console.log('✅ SW registered')).catch(err => console.log('❌ SW error:', err));
         });
     }
 
